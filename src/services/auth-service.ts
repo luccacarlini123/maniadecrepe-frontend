@@ -7,39 +7,39 @@ import { LocalUser } from "../models/local-user";
 import { StorageService } from "./storage.service";
 
 @Injectable()
-export class AuthService{
+export class AuthService {
 
     jwtHelper: JwtHelper = new JwtHelper();
 
-    constructor(public http: HttpClient, public storageService: StorageService){
+    constructor(public http: HttpClient, public storageService: StorageService) {
     }
 
-    authenticate(creds: CredenciaisDTO){
+    authenticate(creds: CredenciaisDTO) {
         return this.http.post(`${API_CONFIG.baseUrl}/login`, creds, {
             observe: 'response',
             responseType: 'text'
         });
     }
 
-    refreshToken(){
-        return this.http.post(`${API_CONFIG.baseUrl}/auth/refresh_token`,
-            {},
-            {
-                observe: 'response',
-                responseType: 'text'
-            });
+    refreshToken() {
+            return this.http.post(`${API_CONFIG.baseUrl}/auth/refresh_token`,
+                {},
+                {
+                    observe: 'response',
+                    responseType: 'text'
+                });
     }
 
-    successfulLogin(token: string){
+    successfulLogin(token: string) {
         let tok = token.substring(7);
-        let user : LocalUser = {
+        let user: LocalUser = {
             token: tok,
             email: this.jwtHelper.decodeToken(tok).sub
         };
         this.storageService.setLocalUser(user);
     }
 
-    logout(){
+    logout() {
         this.storageService.setLocalUser(null);
     }
 }
