@@ -29,7 +29,11 @@ export class ProfilePage {
           this.cliente = response;
           this.getImageIfExists();
         },
-        error => {});
+        error => {
+          this.navCtrl.setRoot('HomePage');
+        });
+    }else{
+      this.navCtrl.setRoot('HomePage');
     }
   }
 
