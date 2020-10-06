@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Detalhe produto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <img [src]="item?.imageUrl || 'assets/imgs/prod.png'"/>
+    <ion-card-title>
+      {{item?.nome}}
+    </ion-card-title>
+    <p>
+      {{item?.preco | currency}}
+    </p>
+  </ion-card>
+  <button ion-button outline block>Adicionar ao carrinho</button>
+</ion-content>
