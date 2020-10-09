@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <ion-avatar>
-    <img class="circle" [src]="profileImage">
+    <img class="circle" [src]="cliente?.imageUrl || 'assets/imgs/avatar-blank.png'">
   </ion-avatar>
   <h2 text-center>{{cliente?.nome}}</h2>
   <p text-center>{{cliente?.email}}</p>
@@ -23,6 +23,8 @@
     </ion-item>
     <ion-item>
       <button ion-button block (click)="getCameraPicture()" [disabled]="cameraOn">Camera</button>
+      <button *ngIf="picture" ion-button outline block (click)="sendPicture()">Enviar imagem</button>
+      <button *ngIf="picture" ion-button outline block (click)="cancel()">Descartar imagem</button>
     </ion-item>
   </ion-card>
 
