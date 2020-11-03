@@ -8,6 +8,12 @@
   <ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon name="person" *ngIf="p.component == 'ProfilePage'"></ion-icon>
+        <ion-icon name="home" *ngIf="p.component == 'EnderecosPage'"></ion-icon>
+        <ion-icon name="apps" *ngIf="p.component == 'CategoriasPage'"></ion-icon>
+        <ion-icon name="cart" *ngIf="p.component == 'CartPage'"></ion-icon>
+        <ion-icon name="reorder" *ngIf="p.component == 'PedidosPage'"></ion-icon>
+        <ion-icon name="arrow-round-forward" *ngIf="p.title == 'Logout'"></ion-icon>
         {{p.title}}
       </button>
     </ion-list>

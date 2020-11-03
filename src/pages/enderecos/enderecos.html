@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meus Endereços</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let e of enderecos" (click)="nextPage(e)">
+      <h2>{{e.logradouro}} - {{e.cidade.nome}} - {{e.cidade.estado.nome}}, 
+        N° {{e.numero}}</h2>
+      <h3>CEP {{e.cep}}</h3>
+    </button>
+  </ion-list>
+  <ion-fab bottom right>
+    <button navPush="EnderecoDetailPage" ion-fab mini><ion-icon name="add"></ion-icon></button>
+   </ion-fab>
+</ion-content>

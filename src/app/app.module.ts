@@ -17,6 +17,9 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { ProdutoService } from '../services/domain/produto.service';
 import { CartService } from '../services/domain/cart-service';
 import { ImageUtilService } from '../services/image-util.service';
+import { EnderecoService } from '../services/domain/endereco-service';
+import { EstadoService } from '../services/domain/estado.service';
+import { CidadeService } from '../services/domain/cidade.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { ImageUtilService } from '../services/image-util.service';
     StorageService,
     ClienteService,
     ProdutoService,
+    EnderecoService,
+    EstadoService,
+    CidadeService,
     CartService,
     ImageUtilService,
     AuthInterceptorProvider,

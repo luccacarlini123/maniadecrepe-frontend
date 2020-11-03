@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pedido detalhado</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Data do pedido
+    </ion-card-header>
+    <ion-item><h2>{{pedido.instante}}</h2></ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>Itens do pedido</ion-card-header>
+    <ion-list>
+      <ion-item *ngFor="let item of pedido.itens">
+        <ion-thumbnail item-start>
+          <img [src]="item.produto.imageUrl || 'assets/imgs/prod.jpg'">
+        </ion-thumbnail>
+        <h2>{{item.produto.nome}}</h2>
+          <p>{{item.produto.preco | currency}}</p>
+          <p class="nolinebreak">{{item.quantidade}}</p>
+          <p item-end>{{item.produto.preco * item.quantidade | currency}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>Total</h2>
+        <h2 item-end>{{pedido.total | currency}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Endereço
+    </ion-card-header>
+    <ion-item>
+      <h2>{{pedido.enderecoDeEntrega.logradouro}}, {{pedido.enderecoDeEntrega.numero}}</h2>
+      <p>{{pedido.enderecoDeEntrega.complemento}} {{pedido.enderecoDeEntrega.bairro}} CEP {{pedido.enderecoDeEntrega.cep}}</p>
+      <p>{{pedido.enderecoDeEntrega.cidade.nome}}, {{pedido.enderecoDeEntrega.cidade.estado.nome}}</p>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Situação
+    </ion-card-header>
+    <ion-item>
+      <h2>{{pedido.pagamento.estado}}</h2>
+    </ion-item>  
+  </ion-card>
+  <ion-card>
+    <ion-item *ngIf="pedido.pagamento['@type']=='pagamentoComCartao'">
+      <h3>Pagamento com cartão</h3>
+    </ion-item>
+    <ion-item *ngIf="pedido.pagamento['@type']=='pagamentoAVista'">
+      <h3>Pagamento no dinheiro</h3>
+    </ion-item>
+  </ion-card>
+</ion-content>

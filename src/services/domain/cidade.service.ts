@@ -12,4 +12,8 @@ export class CidadeService{
     findAll(estadoId: string) : Observable<CidadeDTO[]>{
         return this.http.get<CidadeDTO[]>(`${API_CONFIG.baseUrl}/estados/${estadoId}/cidades`);
     }
+
+    findById(id:string) : Observable<CidadeDTO>{
+        return this.http.get<CidadeDTO>(`${API_CONFIG.baseUrl}/cidades/${id}`);
+    }
 }

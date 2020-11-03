@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meus Pedidos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let pedido of pedidos" (click)="nextPage(pedido)">
+      <h2>Pedido: {{pedido.id}}, {{pedido.pagamento.estado}}</h2>
+      <p>{{pedido.enderecoDeEntrega.cidade.nome}} - {{pedido.enderecoDeEntrega.cidade.estado.nome}} - {{pedido.enderecoDeEntrega.logradouro}}, {{pedido.enderecoDeEntrega.numero}}, {{pedido.enderecoDeEntrega.cidade.nome}}-{{pedido.enderecoDeEntrega.bairro}</p>
+      <p>Total: R$ {{pedido.total}}</p>
+    </button>
+  </ion-list>
+</ion-content>
